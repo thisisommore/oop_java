@@ -1,5 +1,3 @@
-import java.util.Date;
-
 class CParticipant {
     static int counter = 0;
     String name;
@@ -11,8 +9,7 @@ class CParticipant {
         this.name = name;
         this.contactNumber = contactNumber;
         this.branch = branch;
-        this.registrationId = String.format("vit_%d_%s", ++counter,
-                new Date().toString().replace(" ", "_").replace(":", "_"));
+        this.registrationId = String.format("vit_%d", ++counter);
     }
 
     String getRegistrationId() {
@@ -50,14 +47,27 @@ class CParticipant {
     void setBranch(String branch) {
         this.branch = branch;
     }
+
+    public String toString() {
+        return String.format(
+                "Registration ID = %s\n" +
+                        "Branch = %s\n" +
+                        "Contact Number = %d\n" +
+                        "Name = %s\n",
+                this.registrationId, this.branch, this.contactNumber, this.name);
+    }
 }
 
 class App {
     public static void main(String[] args) {
-        CParticipant cParticipant = new CParticipant("Om", 9834729573L, "CS");
-        System.out.printf("Registration ID = %s\n", cParticipant.registrationId);
-        System.out.printf("Branch = %s\n", cParticipant.branch);
-        System.out.printf("Contact Number = %d\n", cParticipant.contactNumber);
-        System.out.printf("Name = %s\n", cParticipant.name);
+        CParticipant om = new CParticipant("Om", 9834729573L, "CS");
+        CParticipant kunal = new CParticipant("Kunal", 7685038493L, "CS");
+        System.out.println(om);
+        System.out.println(kunal);
+
+        CParticipant.setCounter(34);
+        CParticipant shashank = new CParticipant("Shashank", 8694847284L, "CS");
+        System.out.println(shashank);
+
     }
 }
