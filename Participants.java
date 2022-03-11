@@ -1,15 +1,15 @@
 class CParticipant {
-    static int counter = 0;
-    String name;
-    long contactNumber;
-    String branch;
-    String registrationId;
+    static int counter = 1001;
+    private String name;
+    private long contactNumber;
+    private String branch;
+    private String registrationId;
 
     CParticipant(String name, long contactNumber, String branch) {
         this.name = name;
         this.contactNumber = contactNumber;
         this.branch = branch;
-        this.registrationId = String.format("vit_%d", ++counter);
+        this.registrationId = String.format("C%d", ++counter);
     }
 
     String getRegistrationId() {
@@ -59,6 +59,7 @@ class CParticipant {
 }
 
 class App {
+
     public static void main(String[] args) {
         CParticipant om = new CParticipant("Om", 9834729573L, "CS");
         CParticipant kunal = new CParticipant("Kunal", 7685038493L, "CS");
