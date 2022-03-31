@@ -9,9 +9,7 @@ abstract class Shape {
 
     void getInputs() {
     }
-}
 
-class ShapeArea extends Shape {
     // Triangle
     static public double setArea(double height, double base) {
         return (base * height) / 2;
@@ -28,7 +26,7 @@ class ShapeArea extends Shape {
     }
 }
 
-class Triangle extends ShapeArea {
+class Triangle extends Shape {
     double base, height;
 
     void getInputs() {
@@ -41,7 +39,7 @@ class Triangle extends ShapeArea {
 
 }
 
-class Circle extends ShapeArea {
+class Circle extends Shape {
     double radius;
 
     void getInputs() {
@@ -51,7 +49,7 @@ class Circle extends ShapeArea {
     }
 }
 
-class Square extends ShapeArea {
+class Square extends Shape {
     double side;
 
     void getInputs() {
@@ -69,17 +67,17 @@ class Area {
 
         System.out.println("Traingle");
         traingle.getInputs();
-        traingle.area = ShapeArea.setArea(traingle.height, traingle.base);
+        traingle.area = Shape.setArea(traingle.height, traingle.base);
         System.out.printf("Area is %f\n", traingle.area);
 
         System.out.println("Square");
         sqaure.getInputs();
-        sqaure.area = ShapeArea.setArea(sqaure.side);
+        sqaure.area = Shape.setArea(sqaure.side);
         System.out.printf("Area is %f\n", sqaure.area);
 
         System.out.println("Circle");
         circle.getInputs();
-        circle.area = ShapeArea.setArea(circle.radius, 3.14f);
+        circle.area = Shape.setArea(circle.radius, 3.14f);
         System.out.printf("Area is %f\n", circle.area);
     }
 }
