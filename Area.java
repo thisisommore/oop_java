@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Math;
 // Calculate area of triangle, square & circle using function overloading. 
 //Function parameter accept from user. Create Base Class Shape and Derived Classes Triangle,
 // Square, Circle respectively. Implement getInputs() Method for accepting inputs, and Overload setArea() method for calculating area of respective shapes.
@@ -8,19 +7,29 @@ import java.lang.Math;
 abstract class Shape {
     double area;
 
-    void setArea() {
-    }
-
     void getInputs() {
     }
 }
 
-class Triangle extends Shape {
-    double base, height;
-
-    void setArea() {
-        area = (base * height) / 2;
+class ShapeArea extends Shape {
+    // Triangle
+    static public double setArea(double height, double base) {
+        return (base * height) / 2;
     }
+
+    // Circle
+    static public double setArea(double radius, float pi) {
+        return pi * (radius * radius);
+    }
+
+    // Square
+    static public double setArea(double side) {
+        return side * side;
+    }
+}
+
+class Triangle extends ShapeArea {
+    double base, height;
 
     void getInputs() {
         Scanner sc = new Scanner(System.in);
@@ -32,12 +41,8 @@ class Triangle extends Shape {
 
 }
 
-class Circle extends Shape {
+class Circle extends ShapeArea {
     double radius;
-
-    void setArea() {
-        area = Math.PI * (radius * radius);
-    }
 
     void getInputs() {
         Scanner sc = new Scanner(System.in);
@@ -46,12 +51,8 @@ class Circle extends Shape {
     }
 }
 
-class Square extends Shape {
+class Square extends ShapeArea {
     double side;
-
-    void setArea() {
-        area = side * side;
-    }
 
     void getInputs() {
         Scanner sc = new Scanner(System.in);
@@ -68,17 +69,17 @@ class Area {
 
         System.out.println("Traingle");
         traingle.getInputs();
-        traingle.setArea();
+        traingle.area = ShapeArea.setArea(traingle.height, traingle.base);
         System.out.printf("Area is %f\n", traingle.area);
 
         System.out.println("Square");
         sqaure.getInputs();
-        sqaure.setArea();
+        sqaure.area = ShapeArea.setArea(sqaure.side);
         System.out.printf("Area is %f\n", sqaure.area);
 
         System.out.println("Circle");
         circle.getInputs();
-        circle.setArea();
+        circle.area = ShapeArea.setArea(circle.radius, 3.14f);
         System.out.printf("Area is %f\n", circle.area);
     }
 }
