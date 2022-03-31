@@ -45,6 +45,8 @@ class AdderApp {
         Adder adder = new Adder();
         adder.getData();
         int[] numSumRes = adder.numSum();
+        if (numSumRes.length == 0)
+            System.out.println("Array is empty");
         for (int i = 0; i < numSumRes.length; i++) {
             System.out.printf("%d num := %d\n", i + 1, numSumRes[i]);
         }
