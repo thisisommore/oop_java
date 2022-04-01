@@ -7,22 +7,19 @@ import java.util.Scanner;
 abstract class Shape {
     double area;
 
-    void getInputs() {
-    }
-
     // Triangle
-    static public double setArea(double height, double base) {
-        return (base * height) / 2;
+    static public void setArea(Triangle t) {
+        t.area =  (t.base * t.height) / 2;
     }
 
     // Circle
-    static public double setArea(double radius, float pi) {
-        return pi * (radius * radius);
+    static public void setArea(Circle c) {
+        c.area= Math.PI * (c.radius * c.radius);
     }
 
     // Square
-    static public double setArea(double side) {
-        return side * side;
+    static public void setArea(Square sq) {
+        sq.area= sq.side * sq.side;
     }
 }
 
@@ -67,17 +64,17 @@ class Area {
 
         System.out.println("Traingle");
         traingle.getInputs();
-        traingle.area = Shape.setArea(traingle.height, traingle.base);
+        Shape.setArea(traingle);
         System.out.printf("Area is %f\n", traingle.area);
 
         System.out.println("Square");
         sqaure.getInputs();
-        sqaure.area = Shape.setArea(sqaure.side);
+        Shape.setArea(sqaure);
         System.out.printf("Area is %f\n", sqaure.area);
 
         System.out.println("Circle");
         circle.getInputs();
-        circle.area = Shape.setArea(circle.radius, 3.14f);
+        Shape.setArea(circle);
         System.out.printf("Area is %f\n", circle.area);
     }
 }
